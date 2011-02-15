@@ -1,0 +1,33 @@
+/* -- main --*/
+*{
+	margin: 0;
+	padding: 0;
+	font-weight: normal;
+	cursor: default;
+}
+
+body{
+	font-family: Arial;	
+	margin: 30px;
+}
+a{
+	color:rgba(0,101,204,1);
+	cursor:pointer;
+}
+a:hover{
+	text-decoration:underline;
+}
+/*-- button --*/
+.button{
+	-webkit-user-select:none;
+	padding: 2px 0px 2px 0px;
+	margin:0 0 0 8px;
+	font-size: 13px;
+	cursor: pointer;
+	display:inline-block;
+	border:1px solid rgba(204,204,204,1);
+	background-color:rgba(249,249,249,1);
+}
+.button:hover{
+	border:1px solid rgba(0,101,204,1);
+}

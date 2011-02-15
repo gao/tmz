@@ -3,6 +3,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title>Time Zone</title>
+		<link rel="stylesheet" type="text/css" href="css/main.css" />
 		
 		<script type="text/javascript" src="js/jquery.js" ></script>
 		<script type="text/javascript" src="js/jquery.tmpl.js" ></script>		
@@ -15,52 +16,24 @@
 		<script type="text/javascript" src="js/tmz-daos.js" ></script>
 		<script type="text/javascript" src="js/tmz.js" ></script>
 		
-		<script type="text/JavaScript"> 
-		function calc(){ 
-			var D = tmz.D;
-			var wd = tmz.wd;
-			for(var i=0;i<D.length;i++){
-				var t=new Date(); 
-				t.setTime(t.getTime()+(t.getTimezoneOffset()*60000)+((D[i].stz+D[i].dst)*60000));
-				
-				var Dcity = D[i].city;
-				var Dcounty = D[i].country;
-				
-				//the zone's time 
-				var Dyear=t.getFullYear(); 
-				var Dday=t.getDate()<10?'0'+t.getDate():t.getDate(); 
-				var Dmonth=t.getMonth()<10?'0'+(t.getMonth()+1):t.getMonth()+1; 
-				var Dhour=t.getHours()<10?'0'+t.getHours():t.getHours();  
-				var Dminute=t.getMinutes()<10?'0'+t.getMinutes():t.getMinutes();
-				var Dsecond=t.getSeconds()<10?'0'+t.getSeconds():t.getSeconds();
-				var Dweek=wd[t.getDay()]; 
-				var $span =  $("#span"+i);
-				$span.html(Dcity+','+Dcounty+'</br>'+Dhour+':'+Dminute+':'+Dsecond+' - '+Dweek+' '+Dday+'/'+Dmonth+'/'+Dyear);
-			}
-
-			setTimeout('calc()',1000);
-		}
-
-		</script> 
-		
-		
     </head>
     <body>
     	<div>
 	        <h2>Time Zone</h2>
+			
+			<span id="addNewCity" class="button">Add New City</span>
 	
-			<div id="zonediv"></div>	
+			<div id="page"></div>	
 
 		</div> 
 		
 		<script>
 			$(document).ready(function(){
-				var $root = $("#zonediv");
-				var D = tmz.D;
-				for(var i=0;i<D.length;i++){ 
-					$root.append("<span id='span"+i+"'></span></br>");
-				}
-				calc();  
+				snow.ui.display("timeZone");
+				
+				$("#addNewCity").click(function(){
+					snow.ui.display("selectTimeZone");
+				});
 			});
 		</script>
     </body>

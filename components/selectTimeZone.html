@@ -1,0 +1,72 @@
+<!-- selectTimeZone Component -->
+<script type="text/javascript">
+
+	snow.ui.registerComponent("selectTimeZone",
+		{
+			parent: "body"
+		},
+		{
+		build: function(data){
+			var tz = tmz.D;
+			var timeZone = [];
+			
+			for (var i = 0; i < tz.length; i++) {
+				var city = {
+					'city': tz[i].city
+				}
+				timeZone.push(city);
+			}
+			
+			var $e = $("#tmpl-selectTimeZone").tmpl({timeZone:timeZone});
+			$("body").append("<div id='selectTimeZoneScreener' class='dialogScreener'></div>");
+			return $e;
+		},
+		postDisplay:function(data){
+			var component = this;
+			var $element = this.$element;
+			
+			//user click on #selectTimeZoneScreener
+			$("#selectTimeZoneScreener").click(function(){
+				component.close();
+			});
+			
+			//user click on TimeZone add section
+			$element.find(".add .timeZone").bind("click",function(){
+				var $this = $(this);
+				var city = $this.attr("data-obj_city");
+				addCityTimeZone(city);
+				component.close();
+				snow.ui.display("timeZone");
+			});
+			
+			/*-- Helper Functions --*/
+			function addCityTimeZone(city){
+				var timeZone = tmz.D;
+				for (var i = 0; i < timeZone.length; i++) {
+					if(timeZone[i].city == city){
+						snow.dm.save("timeZone",timeZone[i]);
+					}
+				}
+			}
+			
+			/*-- /Helper Functions --*/
+		},
+		close:function(){
+			this.$element.remove();
+			$("#selectTimeZoneScreener").remove();
+		}
+	});
+
+</script>
+<!--  /selectTimeZone Component -->
+
+<script id="tmpl-selectTimeZone" type="text/html">
+	<div class="selectTimeZone">
+		<div class="add">
+			{{each timeZone}}
+			<div class="timeZone" data-obj_city="${city}">${city}</div>
+			{{/each}}
+		</div>
+	</div>
+</script>
+
