@@ -40,15 +40,6 @@
 
 			setTimeout('calc()',1000);
 		}
-		
-		onload=function(){ 
-			var $root = $("#zonediv");
-			var D = tmz.D;
-			for(var i=0;i<D.length;i++){ 
-				$root.append("<span id='span"+i+"'></span></br>");
-			}
-			calc();  
-		}
 
 		</script> 
 		
@@ -61,5 +52,16 @@
 			<div id="zonediv"></div>	
 
 		</div> 
+		
+		<script>
+			$(document).ready(function(){
+				var $root = $("#zonediv");
+				var D = tmz.D;
+				for(var i=0;i<D.length;i++){ 
+					$root.append("<span id='span"+i+"'></span></br>");
+				}
+				calc();  
+			});
+		</script>
     </body>
 </html>
