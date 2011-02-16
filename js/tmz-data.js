@@ -3,6 +3,7 @@ var tmz = tmz || {};
 tmz.wd=['Sun','Mon','Tue','Wed','Thu','Fri','Sat']; 
 
 //city,country,standard time zone(minutes),daylight saving time(minutes) 
+//right now the DST is not use
 tmz.D = [ 
 	//------ Asia ------- //	
 	   {

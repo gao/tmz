@@ -1,3 +1,4 @@
+<!-- timeZone Dao -->	
 snow.dm.registerDao("timeZone",(function(){
 
     var _timeZone = getTimeZone();
@@ -55,3 +56,4 @@ snow.dm.registerDao("timeZone",(function(){
 	return new TimeZoneDao();
 	
 })());
+<!-- timeZone Dao -->	
